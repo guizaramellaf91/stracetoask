@@ -1,0 +1,33 @@
+<%- include('partials/header.ejs') %>
+
+    <body>
+        <%- include('partials/navbar.ejs') %>
+            <div class="container">
+                <hr>
+                <h1>Strace to ask :)</h1>
+                <hr>
+                <a href="/question" class="btn btn-dark">Ask now</a>
+                <hr>
+                <% questions.forEach(question => { %>
+                    <br>
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>
+                                <%= question.title %>
+                            </h3>
+                            <% var i=0; answers.forEach(answer=> { %>
+                                <% if (question.id==answer.questionId) { %>
+                                    <%i++%>
+                                        <% } %>
+                                            <% }) %>
+                                            <br><p>Responses: <b><%=i%></b></p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="/answer/<%= question.id %>"><button class="btn btn-dark">Reply</button></a>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+
+    </body>
+    <%- include('partials/footer.ejs') %>
